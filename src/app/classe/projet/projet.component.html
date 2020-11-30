@@ -1,0 +1,102 @@
+<div class="content" style="margin-bottom: 6px">
+  <div class="col-12 content" style="margin-top: 20px;margin-left: 550px;display: inline-block">
+    <mat-form-field style="width: 250px">
+      <mat-label>Sélectionnez une catégorie</mat-label>
+      <mat-select (selectionChange)="selectOption($event.value)"
+                  [(ngModel)]="selected" name="selected">
+        <mat-option [value]="two">All</mat-option>
+        <mat-option [value]="categorie.nom_categorie" *ngFor="let categorie of categories" required>
+          {{categorie.nom_categorie}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <mat-form-field style="margin-left: 1100px;margin-bottom: -30px">
+    <input matInput type="text" name="search" [(ngModel)]="searchText" placeholder="Chercher un projet">
+  </mat-form-field>
+  <mat-icon>search</mat-icon>
+  <hr>
+  <div style="margin-left: 70px">
+  <div *ngFor="let projet of projets | rechercheProjet:searchText"  class="example-card" style="display: inline-block;margin-left: 50px;margin-bottom: 50px">
+    <div >
+      <mat-card class="mat-elevation-z8" *ngIf="!selected">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image" *ngIf="projet.catgorie == 'Web'" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRmNIztyHaopNv3ReMgzHSZxpFLGg6-XwwunO6hMF10TOHuILJc&usqp=CAU');"></div>
+          <div mat-card-avatar class="example-header-image" *ngIf="projet.catgorie == 'Graphisme'" style="background-image: url('https://image.flaticon.com/icons/png/512/14/14033.png');"></div>
+          <div mat-card-avatar class="example-header-image" *ngIf="projet.catgorie == 'WebMarketing'" style="background-image: url('https://toppng.com/uploads/preview/web-marketing-icone-piatte-set-di-icone-persone-gloucester-road-tube-station-115533754879zcw6u8r2s.png');"></div>
+          <div mat-card-avatar class="example-header-image" *ngIf="projet.catgorie == 'Services'" style="background-image: url('https://w7.pngwing.com/pngs/794/644/png-transparent-computer-icons-customer-service-icon-design-it-service-management-ub4we-engineering-services-hand-service-desktop-wallpaper.png');"></div>
+          <div mat-card-avatar class="example-header-image" *ngIf="projet.catgorie == 'Développement'" style="background-image: url('https://lh3.googleusercontent.com/proxy/zXAsxnzKemhow42c2Z19Byhm2WQ24lMeIjqLun3OAnUUvCNfAzM7GkTYHb1ga9_PxfHyUHc7hsYqD0Bd8rV6qNlLAVwZDL4a4Uji4ylkGjVGFm-babH03cXDUX6DGQ');"></div>
+          <div mat-card-avatar class="example-header-image" *ngIf="projet.catgorie == 'E-commerce'" style="background-image: url('https://doofindermedia.s3.amazonaws.com/blog/2018/05/07/085124-que-es-ecommerce.jpg');"></div>
+
+          <mat-card-title>{{projet.titre}}</mat-card-title>
+          <mat-card-subtitle>
+            Budget: {{projet.budget}} &nbsp; &nbsp;
+            <span *ngIf="projet.etat == true">
+            <i class="fas fa-circle" style="color: #85f285;font-size: 13px"></i>&nbsp;disponible
+            </span>
+            <span *ngIf="projet.etat == false">
+            <i class="fas fa-circle" style="color: red;font-size: 13px"></i>&nbsp;indisponible
+            </span>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="https://res.cloudinary.com/practicaldev/image/fetch/s--ZmPcIbAW--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dzone.com/storage/temp/12334613-971.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          <p>
+            {{projet.sujet}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions align="end" style="padding-right: 15px; display: flex; justify-content: space-between">
+          <button mat-flat-button color="primary" (click)="openDialogDetails(projet.id)"> Détails
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button mat-flat-button color="primary" (click)="postulerDialog(projet.id)" *ngIf="client == false"> Postuler
+            <mat-icon>how_to_reg</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+  <mat-card class="mat-elevation-z8" *ngIf="selected == projet.catgorie">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image" *ngIf="projet.catgorie == 'Web'" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRmNIztyHaopNv3ReMgzHSZxpFLGg6-XwwunO6hMF10TOHuILJc&usqp=CAU');"></div>
+      <div mat-card-avatar class="example-header-image" *ngIf="projet.catgorie == 'Graphisme'" style="background-image: url('https://image.flaticon.com/icons/png/512/14/14033.png');"></div>
+      <div mat-card-avatar class="example-header-image" *ngIf="projet.catgorie == 'WebMarketing'" style="background-image: url('https://toppng.com/uploads/preview/web-marketing-icone-piatte-set-di-icone-persone-gloucester-road-tube-station-115533754879zcw6u8r2s.png');"></div>
+      <div mat-card-avatar class="example-header-image" *ngIf="projet.catgorie == 'Services'" style="background-image: url('https://w7.pngwing.com/pngs/794/644/png-transparent-computer-icons-customer-service-icon-design-it-service-management-ub4we-engineering-services-hand-service-desktop-wallpaper.png');"></div>
+      <div mat-card-avatar class="example-header-image" *ngIf="projet.catgorie == 'Développement'" style="background-image: url('https://lh3.googleusercontent.com/proxy/zXAsxnzKemhow42c2Z19Byhm2WQ24lMeIjqLun3OAnUUvCNfAzM7GkTYHb1ga9_PxfHyUHc7hsYqD0Bd8rV6qNlLAVwZDL4a4Uji4ylkGjVGFm-babH03cXDUX6DGQ');"></div>
+      <div mat-card-avatar class="example-header-image" *ngIf="projet.catgorie == 'E-commerce'" style="background-image: url('https://doofindermedia.s3.amazonaws.com/blog/2018/05/07/085124-que-es-ecommerce.jpg');"></div>
+
+      <mat-card-title>{{projet.titre}}</mat-card-title>
+      <mat-card-subtitle>
+        Budget: {{projet.budget}} &nbsp; &nbsp;
+        <span *ngIf="projet.etat == true">
+            <i class="fas fa-circle" style="color: #85f285;font-size: 13px"></i>&nbsp;disponible
+            </span>
+        <span *ngIf="projet.etat == false">
+            <i class="fas fa-circle" style="color: red;font-size: 13px"></i>&nbsp;indisponible
+            </span>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="https://res.cloudinary.com/practicaldev/image/fetch/s--ZmPcIbAW--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dzone.com/storage/temp/12334613-971.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+       {{projet.sujet}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions align="end" style="padding-right: 15px; display: flex; justify-content: space-between">
+      <button mat-flat-button color="primary" (click)="openDialogDetails(projet.id)"> Détails
+        <mat-icon>visibility</mat-icon>
+      </button>
+      <button mat-flat-button color="primary" (click)="postulerDialog(projet.id)"> Postuler
+        <mat-icon>how_to_reg</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  </div>
+  </div>
+    <mat-card class="example-card" style="display: inline-block;margin-left: 50px;margin-bottom: 50px;margin-top: -150px"  *ngIf="test == true">
+      <button mat-fab color="primary" class="text-center">
+        <mat-icon style="color: white; font-size: 24px;" (click)="ajouterProjet()">add</mat-icon>
+      </button>
+    </mat-card>
+  </div>
+</div>
+<app-footer></app-footer>
+

@@ -1,0 +1,34 @@
+<form class="example-form" (ngSubmit)="onSubmit()">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Freelancini projet" disabled value="Ajouter un projet">
+  </mat-form-field>
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td>
+      <mat-form-field class="example-full-width">
+      <input matInput placeholder="Freelancer" [(ngModel)]="postulation.email_freelancer" name="titre" readonly="true" required>
+    </mat-form-field>
+    </td>
+  </tr>
+    <tr><td><mat-form-field class="example-full-width">
+      <input matInput placeholder="projet"  [(ngModel)]="x.id" name="projet" readonly="true" required>
+    </mat-form-field>
+    </td>
+    </tr>
+  </table>
+  <p>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Devis" #devis="ngModel" [(ngModel)]="postulation.devis" name="devis"  required>
+    </mat-form-field><br/>
+    <mat-error *ngIf="devis.invalid && devis.touched">
+      devis est obligatoire
+    </mat-error>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Date"  [(ngModel)]="postulation.date" name="date" readonly="true" required>
+    </mat-form-field>
+  <div mat-dialog-actions style="margin-left: 300px">
+    <button mat-button [mat-dialog-close] cdkFocusInitial > Ajouter</button>
+  </div>
+ <!-- <div [hidden] ="!submitted"> {{message}} </div>-->
+</form>
+

@@ -1,0 +1,38 @@
+<div class="example-container">
+    <h3>Votre Informations</h3>
+    <form (ngSubmit)="updateClient(client)">
+    
+      <div class="form-group">
+        <label for="client">Nom et Prénom </label>
+        <input class="form-control" type="text" [(ngModel)]="client.client"  name="nomprenom">
+      </div> 
+    
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input class="form-control" type="text" [(ngModel)]="client.email" name="email">
+      </div>
+      <div class="form-group">
+        <label for="email">Password</label>
+        <input class="form-control" type="text" [(ngModel)]="client.password" name="password">
+      </div>
+      <div class="form-group">
+        <label for="img">Image</label>
+        <input class="form-control" type="text" [(ngModel)]="client.img" name="image">
+      </div>
+
+      <div class="form-group">
+        <label for="tel">Téléphone</label>
+        <input class="form-control" type="text" [(ngModel)]="client.tel" name="tel">
+      </div>
+     
+      
+     
+      
+
+      <div class="form-group">
+          <input type="submit" class="btn btn-succes" value="Modifier">
+      </div>
+    </form>
+
+
+    </div>

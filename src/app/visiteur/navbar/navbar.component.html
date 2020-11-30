@@ -1,0 +1,52 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><i class="fas fa-home"></i> Freelancini</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a routerLinkActive="actif" class="nav-link" [routerLink]="['/accueil']">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Presentation</a>
+        </li>
+        <li class="nav-item">
+          <a routerLinkActive="actif" class="nav-link" [routerLink]="['/projets']">Projets</a>
+        </li>
+        <li class="nav-item">
+          <a routerLinkActive="actif" class="nav-link" [routerLink]="['/freelancers']">Freelancers</a>
+        </li>
+        <li class="nav-item" *ngIf="connect == true">
+          <a routerLinkActive="actif" class="nav-link" [routerLink]="['/dashboard']">Chat</a>
+        </li>
+        <li class="nav-item" *ngIf="connect == true && client == false">
+          <a routerLinkActive="actif" class="nav-link" [routerLink]="['/fprofil']">Profil</a>
+        </li>
+        <li class="nav-item" *ngIf="connect == true && client == true">
+          <a routerLinkActive="actif" class="nav-link" [routerLink]="['/cprofil']">Profil</a>
+        </li>
+        <li class="nav-item" *ngIf="connect == true">
+          <button class="btn" style="background-color:#6059f6;" (click)="logout()">Déconnecter</button>
+        </li>
+        <li class="nav-item" *ngIf="connect == false">
+          <button class="btn" style="background-color:#6059f6;" (click)="stype()">Se connecter</button>
+        </li>
+        <li class="nav-item" *ngIf="connect == false">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              S'inscrire
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <button class="dropdown-item" type="button" (click)="ffree()">Freelancer</button>
+              <button class="dropdown-item" type="button"(click)="fcli()">Client</button>
+   
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

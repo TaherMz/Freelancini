@@ -1,0 +1,48 @@
+<h1>demo crud</h1>
+<h3>Create Customer</h3>
+<div [hidden]="submitted" style="width: 300px;">
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Nom</label>
+      <input type="text" class="form-control" id="name" required [(ngModel)]="user.nom" name="nom">
+    </div>
+
+    <div>
+      <label for="age">Prenom</label>
+      <input type="text" class="form-control" id="age" required [(ngModel)]="user.prenom" name="prenom">
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+<div *ngFor="let user of users">
+  <div>
+    <h3>  Nom: {{user.nom}}</h3>
+    <h5>Prenom : {{user.prenom}}</h5>
+  </div>
+  <button (click)="deleteUser($event,user)">delete</button>
+  <button (click)="editUser($event,user)">edit</button>
+  <!--Update -->
+  <div *ngIf="editState && userToEdit.id == user.id">
+    <form (ngSubmit)="updateProd(user)">
+      <div>
+        <div>
+          <div>
+            <label for="titre">Nom</label>
+            <input type="text" [(ngModel)]="user.nom" placeholder="titre" name="c1" id="titre">
+          </div>
+        </div>
+        <div>
+          <div>
+            <label for="Description">Prenom</label>
+            <input type="text" [(ngModel)]="user.prenom" placeholder="Description" name="c2" id="Description">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <input type="submit" class="btn btn-succes" value="Modifier">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<mat-toolbar>
+    <mat-icon style="font-size: 40px;">person</mat-icon>  <span style="font-size:25px;margin-left:25px;">Bienvenu Cher Client</span>
+</mat-toolbar>
+<hr/>
+
+<form [formGroup]="connect" (ngSubmit)="profil()">
+    <mat-form-field  style="width:100%" >
+        <input type="email" formControlName="email"matInput placeholder="Votre Email">
+        <mat-error *ngIf="!connect.get('email')?.hasError('mail')">Cet Email N'existe pas </mat-error>
+    </mat-form-field>
+    <br/>
+    <mat-form-field style="width:100%" >
+        <input type="password" formControlName="password" matInput placeholder="Votre mot de passe">
+        </mat-form-field>
+        <div>
+            <button mat-raised-button  mat-dialog-close type="submit" (click)="profil()" [mat-dialog-close] cdkFocusInitial color="primary"><mat-icon>login</mat-icon>Connecter</button>
+        </div>
+</form>
+

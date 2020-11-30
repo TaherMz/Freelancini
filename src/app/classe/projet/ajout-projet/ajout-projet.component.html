@@ -1,0 +1,76 @@
+<form class="example-form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Freelancini projet" disabled value="Ajouter un projet">
+  </mat-form-field>
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="example-full-width">
+      <input matInput placeholder="Titre" #titr="ngModel"  minlength="4" [(ngModel)]="projet.titre" name="titre" required>
+      <button mat-button *ngIf="titree" matSuffix mat-icon-button aria-label="Clear" (click)="titree=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+      <mat-error *ngIf="titr.invalid && titr.touched">
+        Le titre doit être formé au minimum de 4 carctères
+      </mat-error>
+    </td>
+  </tr>
+    <tr><td><mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Sujet" minlength="20" #suj="ngModel" [(ngModel)]="projet.sujet" name="sujet" required></textarea>
+      <mat-hint align="start"><strong>Décrire votre projet</strong> </mat-hint>
+    </mat-form-field>
+      <mat-error *ngIf="suj.invalid && suj.touched">
+        Le sujet doit être formé au minimum de 20 carctères
+      </mat-error>
+    </td>
+    </tr>
+  </table>
+  <p>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Budget" #budg="ngModel" [(ngModel)]="projet.budget" name="budget"  required>
+      <span matSuffix>TND</span>
+    </mat-form-field>
+    <mat-error *ngIf="budg.invalid && budg.touched">
+      Vous devez saisir le budget
+    </mat-error>
+    <mat-form-field class="example-full-width">
+      <mat-label>Sélectionnez une catégorie</mat-label>
+      <mat-select (selectionChange)="selectOption($event.value)"
+                  [(ngModel)]="selected" name="selected">
+        <mat-option [value]="categorie.nom_categorie" *ngFor="let categorie of categories" >
+          {{categorie.nom_categorie}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <table>
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Date début</mat-label>
+            <input matInput pattern="^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](20)((2[0-9]))" #dat="ngModel" [(ngModel)]="projet.date_debut" name="date_debut" required>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Date fin</mat-label>
+            <input matInput pattern="^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](20)((2[0-9]))" [(ngModel)]="projet.date_fin" name="date_fin" required>
+          </mat-form-field>
+        </td>
+      </tr>
+  <tr>
+    <td>
+      <mat-error  *ngIf="dat.invalid && dat.touched ">
+        La date doit être comme suit JJ-MM-YYYY
+      </mat-error>
+    </td>
+  </tr>
+    </table>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Image" >
+  </mat-form-field>
+  <div mat-dialog-actions style="margin-left: 300px">
+    <button mat-button [mat-dialog-close] cdkFocusInitial [disabled]="f.invalid" (click)="onSubmit(f)"> Ajouter</button>
+  </div>
+  <div [hidden] ="!submitted"> {{message}} </div>
+</form>
+

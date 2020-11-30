@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+     
+
+    </head>
+    <body id="page-top">
+        
+        
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary " id="sideNav">
+    <a class="navbar-brand js-scroll-trigger" href="#page-top">
+        <span class="d-block d-lg-none">{{getfree?.nom}} {{getfree?.prenom}}</span><span class="d-none d-lg-block">
+            <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src={{getfree?.img}} alt="" /></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Apropos">A propos</a></li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Projets_en_cours">Projets en cours</a></li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Historique_Projets">Historique Projets</a></li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Interests</a></li>
+        </ul>
+    </div>
+</nav>
+<!-- Page Content-->
+<div class="container-fluid p-0">
+<!-- A propos-->
+<section class="resume-section" id="Apropos">
+    <div class="resume-section-content">
+        <h1 class="mb-0">{{getfree?.nom}}<span class="text-primary">{{getfree?.prenom}}</span></h1>
+        <div class="d-flex flex-row">
+            <div class="subheading mb-5">
+                <i class="fas fa-phone"></i> {{getfree?.tel}}<br/>
+                <a href="mailto:name@email.com"><i class="far fa-envelope"></i> {{getfree?.email}}</a><br/>
+            </div>
+            <div class="resume-section-content">
+                <div class="row justify-content-center">
+                    <div class="col-lg-2 col-md-3">
+                        <div class="statistics_item">
+                            <h3><span class="counter">{{getfree?.point}}</span></h3>
+                            <p>Point</p> 
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3">
+                        <div class="statistics_item">
+                            <h3><span class="counter">3</span></h3>
+                            <p>Projets</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="lead mb-5" >{{getfree?.domaine}}</p>
+        <div class="social-icons">
+            <a class="social-icon" href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a class="social-icon" href="#"><i class="fab fa-github"></i></a>
+            <a class="social-icon" href="#"><i class="fab fa-twitter"></i></a>
+            <a class="social-icon" href="#"><i class="fab fa-facebook-f"></i></a>
+        </div>        
+        <br>
+        <div>
+            <a [routerLink]="['/modifierpf',idfreelancer]" title="Modifier le profil" (click)="modif()">
+            <svg class="bi bi-pencil-square" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" >
+                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+            </svg>
+            </a>
+            <button type="button" class="btn btn-outline-primary ml-5">Télécharger le CV</button>
+        </div>
+    </div>
+</section>
+<hr class="m-0" />
+
+<!-- Projets en cours-->
+<section class="resume-section" id="Projets_en_cours">
+    <div class="resume-section-content">
+        <h2 class="mb-5">Projets en cours</h2>
+        <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+            <div class="flex-grow-1 d-flex align-items-center">
+                <div class="flex-column">
+                <h3 class="mb-0">University of Colorado Boulder</h3>
+                <div class="subheading mb-3">Bachelor of Science</div>
+                <div>Computer Science - Web Development Track</div>
+                <p>GPA: 3.23</p>
+                </div>
+            </div>
+            <div class="flex-shrink-0">
+                <app-pie [dateDebut]="projet.Datedebut" [dateFin]="projet.Datefin"></app-pie>
+            </div>
+        </div>
+        <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+            <div class="flex-grow-1 d-flex align-items-center">
+                <div class="flex-column">
+                <h3 class="mb-0">University of Colorado Boulder</h3>
+                <div class="subheading mb-3">Bachelor of Science</div>
+                <div>Computer Science - Web Development Track</div>
+                <p>GPA: 3.23</p>
+                </div>
+            </div>
+            <div class="flex-shrink-0">
+                <app-pie [dateDebut]="'20/05/2020'" [dateFin]="'07/07/2020'"></app-pie>
+            </div>
+        </div>
+    </div>
+</section>
+<hr class="m-0" />
+
+<!-- Historique_Projets -->
+<section id="Historique_Projets" class="resume-section">
+    <div class="resume-section-content">
+        <h2 class="mb-5">Historique des projet</h2>
+        <div class="row">
+            <!-- Historique_Projets member -->
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="image-flip" >
+                    <div class="mainflip flip-0">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p><img class=" img-fluid" src="../../assets/mac.png" alt="card image"></p>
+                                    <h4 class="card-title">projet nom</h4>
+                                    <p class="card-text">This is basic card with image on top, title, description and button.</p>
+                                    <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <h4 class="card-title">projet nom</h4>
+                                    <p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
+                                    <button type="button" class="btn btn-light">Light</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ./Historique_Projets member -->
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="image-flip" >
+                    <div class="mainflip flip-0">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p><img class=" img-fluid" src="../../assets/mac.png" alt="card image"></p>
+                                    <h4 class="card-title">projet nom</h4>
+                                    <p class="card-text">This is basic card with image on top, title, description and button.</p>
+                                    <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <h4 class="card-title">projet nom</h4>
+                                    <p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
+                                    <button type="button" class="btn btn-light">Light</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Awards-->
+<section class="resume-section" id="awards">
+    <div class="resume-section-content">
+        <h2 class="mb-5">Awards & Certifications</h2>
+        <ul class="fa-ul mb-0">
+            <li>
+                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>Google Analytics Certified Developer
+            </li>
+            <li>
+                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>Mobile Web Specialist - Google Certification
+            </li>
+            <li>
+                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>1<sup>st </sup>Place - University of Colorado Boulder - Emerging Tech Competition 2009
+            </li>
+            <li>
+                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>1<sup>st </sup>Place - University of Colorado Boulder - Adobe Creative Jam 2008 (UI Design Category)
+            </li>
+            <li>
+                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>2<sup>nd </sup>Place - University of Colorado Boulder - Emerging Tech Competition 2008
+            </li>
+            <li>
+                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>1<sup>st </sup>Place - James Buchanan High School - Hackathon 2006
+            </li>
+            <li>
+                <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>3<sup>rd </sup>Place - James Buchanan High School - Hackathon 2005
+            </li>
+        </ul>
+    </div>
+</section>
+<hr class="m-0" />
+</div>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
+
+
+      <!-- Bootstrap core JS-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+      <!-- Third party plugin JS-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+      <!-- Core theme JS-->
+      <script src="js/scripts.js"></script>
+  </body>
+</html>

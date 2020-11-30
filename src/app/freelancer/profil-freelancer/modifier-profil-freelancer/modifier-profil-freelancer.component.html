@@ -1,0 +1,40 @@
+<div class="container">
+<h3>votre Information</h3>
+<form (ngSubmit)="updateFreelancer(freelancer)">
+  
+  <div class="form-group">
+    <label for="nom">Nom</label>
+    <input class="form-control" type="text" [(ngModel)]="freelancer.nom"  name="nom">
+  </div> 
+  <div class="form-group">
+    <label for="prenom">Prenom</label>
+    <input class="form-control" type="text" [(ngModel)]="freelancer.prenom" name="prenom">
+  </div>
+  <div class="form-group">
+    <label for="email">E-mail</label>
+    <input class="form-control" type="text" [(ngModel)]="freelancer.email" name="email">
+  </div>
+  <div class="form-group">
+    <label for="tel">Téléphone</label>
+    <input class="form-control" type="text" [(ngModel)]="freelancer.tel" name="tel">
+  </div>
+  <div class="form-group">
+    <label for="domaine">Votre Domaine</label>
+    <select class="custom-select mr-sm-2" [(ngModel)]="freelancer.domaine" name="domaine">
+      <option [value]="categorie.nom_categorie" *ngFor="let categorie of categories" required></option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="img">image</label>
+    <input class="form-control" type="text" [(ngModel)]="freelancer.img" name="img">
+  </div>
+  <div class="form-group">
+      <input type="submit" class="btn btn-succes" value="Modifier">
+  </div>
+</form>
+</div>
+   
+     
+  
+    
+    

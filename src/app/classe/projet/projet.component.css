@@ -1,0 +1,43 @@
+.btn-outline-dark {
+  width:50px;
+  height:50px;
+  box-shadow:2px 2px 8px #aaa;
+  font:bold 13px Arial;
+  border-radius:50%;
+  color: #667985;
+  float:right;
+  border-color: #c6ced6;
+}
+.fa-circle{
+  font-size: 50px;
+}
+.btn-outline-dark:hover{
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color:white;
+}
+#d1{
+  height: 270px;
+  display: inline-block;
+}
+.example-card {
+  margin-right: 20px;
+
+  max-width: 300px;
+}
+
+.example-header-image {
+
+  background-size: cover;
+}
+#card{
+  box-shadow: 2px 2px 2px #808080;
+}
+
+mat-card:hover{
+  transform: scale(1.01);
+  box-shadow: 5px 10px #fbfbfb;
+}
+div.content{
+  background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/debut_light.png");
+}

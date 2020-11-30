@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
+
+
+.navbar{
+  padding: -8rem;
+}
+
+.navbar-nav li{
+  padding-right: 20px;
+}
+.nav-link{
+  font-size: 1.1em !important;
+}
+
+.navbar button {
+  cursor: pointer;
+}
+
+.navbar button:focus {
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+.navbar .button {
+  display: inline-block;
+  background-color: #6059f6;
+  color: #fff;
+  border-radius: 30px;
+  padding: 8px 25px;
+  text-transform: capitalize;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+.actif{
+  font-weight: bold;
+}

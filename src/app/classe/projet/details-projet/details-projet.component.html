@@ -1,0 +1,38 @@
+<div mat-dialog-content>
+  <mat-card>
+    <div>
+      <mat-card-header style="width: 100%">
+        <mat-card-title style="text-align: center; width: 100%;">
+         Titre de projet: {{x.titre}}
+          <mat-card-subtitle style="margin-left: 45px">Budget : {{x.budget}} TND &nbsp;
+            <span *ngIf="x.etat == true">
+            <i class="fas fa-circle" style="color: #85f285;font-size: 13px"></i>&nbsp;disponible
+            </span>
+            <span *ngIf="x.etat == false">
+            <i class="fas fa-circle" style="color: red;font-size: 13px"></i>&nbsp;indisponible
+            </span>
+          </mat-card-subtitle>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content style="margin-left: 45px">
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Catégorie" readonly="true" value={{x.catgorie}}>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Sujet" readonly="true" value={{x.sujet}}></textarea>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input readonly="true" matInput placeholder="Date debut" value={{x.date_debut}}>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input readonly="true" matInput placeholder="Date fin" value={{x.date_fin}}>
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">Fermer</button>
+    </div>
+  </mat-card>
+</div>
